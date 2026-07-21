@@ -14,6 +14,10 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHeader(),
+
+              const SizedBox(height: 32),
+
+              _buildDaysToGym(),
             ],
           ),
           ),
@@ -24,49 +28,124 @@ class HomePage extends StatelessWidget {
    
    Widget _buildHeader() {
     return Row(
-      children: [
-        IconButton(
-        padding: EdgeInsets.zero,
-        constraints: BoxConstraints(),
-        onPressed: () {},
-        icon: const CircleAvatar(
-          radius: 24,
-          backgroundColor: Color.fromARGB(255, 43, 255, 0),
-          child: Icon(           
-            Icons.person_outline,
-            color: Color.fromARGB(255, 255, 255, 255),
+      children: [ 
+        TextButton(onPressed: () {},
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 10,
+          ),
+          side: const BorderSide(
+            color: Color.fromARGB(101, 255, 255, 255),
+            width: 0.1,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(64),
           ),
         ),
-      ),     
-        const SizedBox(width: 8),
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Hello!',
-            style: TextStyle(
-              fontSize: 12,
-              color: Color(0xff333333),
-             ),
+         child: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [            
+            Icon(
+              Icons.fitness_center,
+              size:16,
+              color: Colors.white,
             ),
-            Text('User',
+            SizedBox(width: 8),
+            Text('My Plan',
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Color(0xFF20202A),
-             ),
+              fontSize: 16,
+              color: Colors.white,
+            ),),
+            SizedBox(width: 8),
+            Icon(
+              Icons.keyboard_arrow_down_sharp,
+              size: 25,
+              color: Colors.white,
             ),
           ],
+         ),
         ),
         const Spacer(),
-          IconButton(
-            onPressed: () {},
-             icon: const Icon (
-              Icons.notifications,
-              color: Color.fromARGB(255, 43, 255, 0),
-             ),
+          Material(
+          color: Colors.transparent,
+          shape: const CircleBorder(
+          side: BorderSide(
+          color: Color.fromARGB(101, 255, 255, 255),
+          width: 0.1,
+           ),
+          ),
+        child: InkWell(
+        onTap: () {
+        },
+          customBorder: const CircleBorder(),
+          child: const SizedBox(
+            width: 30,
+            height: 30,
+              child: Icon(
+                Icons.keyboard_arrow_up,
+                color: Colors.white,
+      ),
+    ),
+  ),
+),
+  SizedBox(width: 8),
+   Material(
+    color: Colors.transparent,
+    shape: const CircleBorder(
+      side: BorderSide(
+        color: Color.fromARGB(101, 255, 255, 255),
+        width: 0.1,
+      ),
+    ),
+    child: InkWell(
+      onTap: () {},
+      customBorder: const CircleBorder(),
+      child: const SizedBox(
+        width: 30,
+        height: 30,
+        child: Icon(
+          Icons.settings,
+          color: Colors.white,
         ),
-      ],
+      ),
+    ),
+   ),
+   SizedBox(width: 8),
+   Material(
+    color: Colors.transparent,
+    shape: const CircleBorder(
+      side: BorderSide(
+        color: Color.fromARGB(101, 255, 255, 255),
+        width: 0.1,
+      ),
+    ),
+    child: InkWell(
+      onTap: () {},
+      customBorder: const CircleBorder(),
+      child: const SizedBox(
+        width: 30,
+        height: 30,
+        child: Icon(
+          Icons.star_border_purple500_sharp,
+          color: Colors.white,
+        ),
+      ),
+    ),
+   ),
+    ],
     );
+ }
+
+   Widget _buildDaysToGym() {
+     return Container(
+      width: double.infinity,
+      height: 300,
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 43, 255, 0),
+        borderRadius: BorderRadius.circular(24),
+      ),
+     );  
    }
 }
 
