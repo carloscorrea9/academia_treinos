@@ -10,7 +10,7 @@ class TreinosdeAcademia extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Treinos de Academia',
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF8F8FA),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 42, 100, 100),
         fontFamily: 'Arial',
       ),
       home: const HomePage(),

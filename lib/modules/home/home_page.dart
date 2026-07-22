@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             children: [
               _buildHeader(),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 40),
 
               _buildDaysToGym(),
             ],
@@ -138,13 +138,50 @@ class HomePage extends StatelessWidget {
  }
 
    Widget _buildDaysToGym() {
-     return Container(
-      width: double.infinity,
-      height: 150,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 43, 255, 0),
-        borderRadius: BorderRadius.circular(24),
-      ),
-     );  
+     return Row(
+      
+      children: [ 
+          TextButton(
+            onPressed: () {},
+            child: Text('Day 1',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),),),
+            SizedBox(width: 6),
+            TextButton(
+            onPressed: () {},
+            child: Text('Day 2',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),),),
+            SizedBox(width: 6),
+            TextButton(
+            onPressed: () {},
+            child: Text('Day 3',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),),),
+            SizedBox(width: 6),
+            TextButton(
+            onPressed: () {},
+            child: Text('Day 4',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),),),
+            SizedBox(width: 6),
+            TextButton(
+            onPressed: () {},
+            child: Text('Day 5',
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.white,
+            ),),),
+            SizedBox(width: 6),
+          ],
+        );
    }
 }
