@@ -139,8 +139,7 @@ class HomePage extends StatelessWidget {
 
    Widget _buildDaysToGym() {
      return Row(
-      
-      children: [ 
+       children: [ 
           TextButton(
             onPressed: () {},
             child: Text('Day 1',
