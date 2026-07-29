@@ -1,5 +1,8 @@
 import 'package:academia_treinos/core/constants/app_assets.dart';
 import 'package:academia_treinos/core/constants/app_colors.dart';
+import 'package:academia_treinos/core/constants/app_icons.dart';
+import 'package:academia_treinos/modules/home/widgets/muscle_card_exercices.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import '../home/widgets/muscle_card.dart';
 
@@ -29,6 +32,10 @@ class HomePage extends StatelessWidget {
               const SizedBox(),
 
               _buildTargetMuscle(),
+
+              const SizedBox(height: 28),
+
+              _buildExercises(),
             ],
           ),
           ),
@@ -332,5 +339,76 @@ class HomePage extends StatelessWidget {
         ),
       ],
     );
+}
+
+Widget _buildExercises() {
+  return Column(
+    children: [
+      Row(
+        children: [
+          const Text('7 Exercises'),
+          const Spacer(),
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Edit',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                SvgPicture.asset(
+                  AppIcons.editIcon,
+                  width: 16,
+                  height: 16,
+                  colorFilter: ColorFilter.mode(
+                  AppColors.textSecondary, 
+                  BlendMode.srcIn),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+        ],),
+      ),
+    ],
+  );
 }
 }
