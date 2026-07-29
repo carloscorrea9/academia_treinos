@@ -196,9 +196,39 @@ class HomePage extends StatelessWidget {
    }
 
    Widget _buildWorkout(){
-    return Row(
-      children: [
-        TextButton(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [  
+        Row(
+          children: [
+          Text('WORKOUT SETTINGS',
+          style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),),
+          Spacer(),
+          TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            minimumSize: Size.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: Text('More Options ...',
+          style: TextStyle(
+            fontSize: 12,
+            color: AppColors.textSecondary
+          ),
+          )
+          ),
+          ],          
+        ), 
+        SingleChildScrollView( 
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            TextButton(
           onPressed: () {},
           child: const Row(
             children: [
@@ -238,7 +268,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8),
-        TextButton(
+          TextButton(
           onPressed:() {},
           child: const Row(
             children: [
@@ -254,6 +284,9 @@ class HomePage extends StatelessWidget {
             ),
             ],
           ),
+        ),  
+          ],
+        ),
         ),
        ],
     );
@@ -265,7 +298,7 @@ class HomePage extends StatelessWidget {
        children: [       
         const Text('Target Muscles',
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
