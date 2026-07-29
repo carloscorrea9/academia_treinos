@@ -1,4 +1,10 @@
+import 'package:academia_treinos/core/constants/app_assets.dart';
+import 'package:academia_treinos/core/constants/app_colors.dart';
+import 'package:academia_treinos/core/constants/app_icons.dart';
+import 'package:academia_treinos/modules/home/widgets/muscle_card_exercices.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import '../home/widgets/muscle_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,6 +24,18 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 40),
 
               _buildDaysToGym(),
+
+              const SizedBox(height: 28),
+
+              _buildWorkout(),
+
+              const SizedBox(),
+
+              _buildTargetMuscle(),
+
+              const SizedBox(height: 28),
+
+              _buildExercises(),
             ],
           ),
           ),
@@ -183,4 +201,214 @@ class HomePage extends StatelessWidget {
           ],
         );
    }
+
+   Widget _buildWorkout(){
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [  
+        Row(
+          children: [
+          Text('WORKOUT SETTINGS',
+          style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),),
+          Spacer(),
+          TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            minimumSize: Size.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: Text('More Options ...',
+          style: TextStyle(
+            fontSize: 12,
+            color: AppColors.textSecondary
+          ),
+          )
+          ),
+          ],          
+        ), 
+        SingleChildScrollView( 
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            TextButton(
+          onPressed: () {},
+          child: const Row(
+            children: [
+              Icon(
+                Icons.mail_outline_rounded,
+                color: AppColors.iconPrimary,
+              ),
+               Text('My Gym',
+                 style: TextStyle(
+                 color: AppColors.textPrimary,
+                 fontSize: 18,
+               ),
+             ),
+             Icon(
+              Icons.keyboard_arrow_down_sharp,
+              color: AppColors.iconPrimary,
+             ),
+           ],
+         ),
+        ),
+        SizedBox(width: 8),
+        TextButton(
+          onPressed:() {},
+          child: const Row(
+            children: [
+              Text('50 min',
+              style: TextStyle(
+                fontSize: 20,
+                color: AppColors.textPrimary,
+              )
+              ),
+              Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: AppColors.iconPrimary,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(width: 8),
+          TextButton(
+          onPressed:() {},
+          child: const Row(
+            children: [
+              Text('4 Muscles',
+              style: TextStyle(
+                fontSize: 20,
+                color: AppColors.textPrimary,
+              ),                
+              ),
+            Icon(
+              Icons.keyboard_arrow_down_sharp,
+              color: AppColors.iconPrimary,
+            ),
+            ],
+          ),
+        ),  
+          ],
+        ),
+        ),
+       ],
+    );
+   }
+
+   Widget _buildTargetMuscle(){
+    return Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       children: [       
+        const Text('Target Muscles',
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        ),
+        const SizedBox(height: 12),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              MuscleCard(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Back',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Abdominal',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Obliques',
+                imagePath: AppAssets.appIcon,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+}
+
+Widget _buildExercises() {
+  return Column(
+    children: [
+      Row(
+        children: [
+          const Text('7 Exercises'),
+          const Spacer(),
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Edit',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                const SizedBox(width: 4),
+                SvgPicture.asset(
+                  AppIcons.editIcon,
+                  width: 16,
+                  height: 16,
+                  colorFilter: ColorFilter.mode(
+                  AppColors.textSecondary, 
+                  BlendMode.srcIn),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              MuscleCardExercices(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+        ],),
+      ),
+    ],
+  );
+}
 }

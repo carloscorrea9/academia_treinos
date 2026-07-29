@@ -13,4 +13,6 @@ abstract final class AppColors {
 
   static const Color border = Color(0x61FFFFFF);
   static const Color transparent = Colors.transparent;
+
+  static const Color iconPrimary = Colors.white;
 }
