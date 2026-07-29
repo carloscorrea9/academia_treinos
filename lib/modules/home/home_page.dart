@@ -1,3 +1,4 @@
+import 'package:academia_treinos/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,6 +19,14 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 40),
 
               _buildDaysToGym(),
+
+              const SizedBox(height: 28),
+
+              _buildWorkout(),
+
+              const SizedBox(),
+
+              _buildTargetMuscle(),
             ],
           ),
           ),
@@ -183,4 +192,54 @@ class HomePage extends StatelessWidget {
           ],
         );
    }
+
+   Widget _buildWorkout(){
+    return Row(
+      children: [
+        TextButton(
+          onPressed: () {},
+          child: const Row(
+            children: [
+              Icon(
+                Icons.mail_outline_rounded,
+                color: AppColors.iconPrimary,
+              ),
+               Text('My Gym',
+                 style: TextStyle(
+                 color: AppColors.textPrimary,
+                 fontSize: 18,
+               ),
+             ),
+             Icon(
+              Icons.keyboard_arrow_down_sharp,
+              color: AppColors.iconPrimary,
+             ),
+           ],
+         ),
+        ),
+        SizedBox(width: 8),
+        TextButton(
+          onPressed:() {},
+          child: const Row(
+            children: [
+              Text('50 min',
+              style: TextStyle(
+                fontSize: 20,
+                color: AppColors.textPrimary,
+              )
+              ),
+              Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: AppColors.iconPrimary,
+              ),
+            ],
+          ),
+        ),
+       ],
+    );
+   }
+
+   Widget _buildTargetMuscle(){
+    return Row();
+}
 }
