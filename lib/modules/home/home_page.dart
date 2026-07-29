@@ -1,5 +1,7 @@
+import 'package:academia_treinos/core/constants/app_assets.dart';
 import 'package:academia_treinos/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../home/widgets/muscle_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -235,11 +237,67 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(width: 8),
+        TextButton(
+          onPressed:() {},
+          child: const Row(
+            children: [
+              Text('4 Muscles',
+              style: TextStyle(
+                fontSize: 20,
+                color: AppColors.textPrimary,
+              ),                
+              ),
+            Icon(
+              Icons.keyboard_arrow_down_sharp,
+              color: AppColors.iconPrimary,
+            ),
+            ],
+          ),
+        ),
        ],
     );
    }
 
    Widget _buildTargetMuscle(){
-    return Row();
+    return Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       children: [       
+        const Text('Target Muscles',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: AppColors.textPrimary,
+        ),
+        ),
+        const SizedBox(height: 12),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              MuscleCard(
+                title: 'Chest',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Back',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Abdominal',
+                imagePath: AppAssets.appIcon,
+              ),
+              const SizedBox(width: 8),
+              MuscleCard(
+                title: 'Obliques',
+                imagePath: AppAssets.appIcon,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
 }
 }
