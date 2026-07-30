@@ -1,10 +1,13 @@
 import 'package:academia_treinos/core/constants/app_assets.dart';
 import 'package:academia_treinos/core/constants/app_colors.dart';
 import 'package:academia_treinos/core/constants/app_icons.dart';
-import 'package:academia_treinos/modules/home/widgets/muscle_card_exercices.dart';
+import 'package:academia_treinos/modules/home/presentation/widgets/muscle_card_exercices.dart';
+import 'package:academia_treinos/modules/home/presentation/widgets/header_icon_button.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:flutter/material.dart';
-import '../home/widgets/muscle_card.dart';
+import '../widgets/muscle_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,9 +22,9 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(),
+              _buildHeader(context),
 
-              const SizedBox(height: 40),
+              const SizedBox(height: 16),
 
               _buildDaysToGym(),
 
@@ -44,115 +47,226 @@ class HomePage extends StatelessWidget {
     );
   }
    
-   Widget _buildHeader() {
+   Widget _buildHeader(BuildContext context) {
     return Row(
-      children: [ 
-        TextButton(onPressed: () {},
-        style: TextButton.styleFrom(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
-          side: const BorderSide(
-            color: Color.fromARGB(101, 255, 255, 255),
-            width: 0.1,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(64),
-          ),
-        ),
-         child: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [            
-            Icon(
-              Icons.fitness_center,
-              size:16,
-              color: Colors.white,
+      children: [
+        Material(
+          color: const Color(0xFF173E44),
+          borderRadius: BorderRadius.circular(24),
+          child: InkWell(
+            onTap: () {
+              _showPlanModeBottomSheet(context);
+            },
+            borderRadius: BorderRadius.circular(24),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 9,
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.fitness_center,
+                    size: 15,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 7),
+                  Text('My Plan',
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: Colors.white70,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(width: 8),
-            Text('My Plan',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),),
-            SizedBox(width: 8),
-            Icon(
-              Icons.keyboard_arrow_down_sharp,
-              size: 25,
-              color: Colors.white,
-            ),
-          ],
-         ),
+          ),
         ),
         const Spacer(),
-          Material(
-          color: Colors.transparent,
-          shape: const CircleBorder(
-          side: BorderSide(
-          color: Color.fromARGB(101, 255, 255, 255),
-          width: 0.1,
-           ),
+
+        HeaderIconButton(
+          icon: Icons.keyboard_arrow_down_rounded,
+          onTap: () {},
+        ),
+
+        const SizedBox(width: 7),
+
+        HeaderIconButton(
+          icon: Icons.tune_rounded,
+          onTap: () {},
+        ),
+
+        const SizedBox(width: 7),
+
+        HeaderIconButton(
+          icon: Icons.workspace_premium_outlined,
+          backgroundColor: const Color(0XFF6DFF39),
+          iconColor: const Color(0xFF062D31),
+          borderColor: const Color(0xFF6DFF39),
+          onTap: () {},
+        ),
+      ], 
+    );  
+ }
+ 
+ void _showPlanModeBottomSheet(BuildContext context){
+  showModalBottomSheet<void>(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return FractionallySizedBox(
+        heightFactor: 0.5,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+          decoration: const BoxDecoration(
+            color: Color(0xff082D32),
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(28),
+            ),
           ),
-        child: InkWell(
-        onTap: () {
-        },
-          customBorder: const CircleBorder(),
-          child: const SizedBox(
-            width: 30,
-            height: 30,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+               width: 42,
+               height: 4,
+               decoration: BoxDecoration(
+                color: Colors.white24,
+                borderRadius: BorderRadius.circular(20),
+               ),                 
+              ),
+            ),
+            const SizedBox(height: 24),
+
+            const Text('Select your mode',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+
+            const SizedBox(height: 24),
+
+            const Text('Choose how you want to organize your workouts.',
+            style: TextStyle(
+              color: Colors.white60,
+              fontSize: 14, 
+            ),),
+
+            const SizedBox(height: 24),
+
+            Expanded(
+              child: Column(
+                children: [
+                  _buildModeOption(
+                    context: context,
+                    icon: Icons.auto_awesome,
+                    title: 'Smart Plan',
+                    subtitle: 'A plan created based on your goals.'
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  _buildModeOption(
+                    context: context,
+                    icon: Icons.edit_calendar_outlined,
+                    title: 'Custom Plan',
+                    subtitle: 'Create and organize your own routine.'
+                  ),
+
+                   const SizedBox(height: 12),
+
+                  _buildModeOption(
+                    context: context,
+                    icon: Icons.auto_awesome,
+                    title: 'Quick Workout',
+                    subtitle: 'Start a suggested workout immediately.'
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        ),
+      );
+    },
+  );
+ }
+
+ Widget _buildModeOption({
+  required BuildContext context,
+  required IconData icon,
+  required String title,
+  required String subtitle,
+ }) {
+  return Material(
+    color: const Color(0xFF103B41),
+    borderRadius: BorderRadius.circular(16),
+    child: InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      borderRadius: BorderRadius.circular(16),
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Row(
+          children: [
+            Container(
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                color: Color(0xFF195058),
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: Icon(
-                Icons.keyboard_arrow_up,
-                color: Colors.white,
-      ),
+                icon,
+                color: const Color(0xFF6DFF39),
+                size: 21,
+              ),
+            ),
+
+            const SizedBox(width: 14),
+
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+
+                  const SizedBox(width: 4),
+
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: Colors.white54,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: Colors.white38,
+              )
+          ],),),
+          
     ),
-  ),
-),
-  SizedBox(width: 8),
-   Material(
-    color: Colors.transparent,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Color.fromARGB(101, 255, 255, 255),
-        width: 0.1,
-      ),
-    ),
-    child: InkWell(
-      onTap: () {},
-      customBorder: const CircleBorder(),
-      child: const SizedBox(
-        width: 30,
-        height: 30,
-        child: Icon(
-          Icons.settings,
-          color: Colors.white,
-        ),
-      ),
-    ),
-   ),
-   SizedBox(width: 8),
-   Material(
-    color: Colors.transparent,
-    shape: const CircleBorder(
-      side: BorderSide(
-        color: Color.fromARGB(101, 255, 255, 255),
-        width: 0.1,
-      ),
-    ),
-    child: InkWell(
-      onTap: () {},
-      customBorder: const CircleBorder(),
-      child: const SizedBox(
-        width: 30,
-        height: 30,
-        child: Icon(
-          Icons.star_border_purple500_sharp,
-          color: Colors.white,
-        ),
-      ),
-    ),
-   ),
-    ],
-    );
+  );
  }
 
    Widget _buildDaysToGym() {
