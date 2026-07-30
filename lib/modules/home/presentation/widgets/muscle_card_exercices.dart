@@ -5,11 +5,13 @@ class MuscleCardExercices extends StatelessWidget {
     super.key,
     required this.title,
     required this.imagePath,
+    required this.subtitle,
     this.onTap,
   });
 
   final String title;
   final String imagePath;
+  final String subtitle;
   final VoidCallback? onTap;
 
   @override
@@ -65,8 +67,8 @@ class MuscleCardExercices extends StatelessWidget {
 
                     const SizedBox(height: 6),
 
-                    const Text(
-                      '3 sets • 12 reps • 29 kg',
+                     Text(
+                      subtitle,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
