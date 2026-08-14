@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MuscleCardExercices extends StatelessWidget {
-  const MuscleCardExercices({
+class ExerciseTile extends StatelessWidget {
+  const ExerciseTile({
     super.key,
     required this.title,
     required this.imagePath,
@@ -25,30 +25,19 @@ class MuscleCardExercices extends StatelessWidget {
         child: Container(
           width: double.infinity,
           height: 82,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: const Color(0xFF17454D),
-              width: 1,
-            ),
+            border: Border.all(color: const Color(0xFF17454D)),
           ),
           child: Row(
             children: [
               SizedBox(
                 width: 56,
                 height: 56,
-                child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.contain,
-                ),
+                child: Image.asset(imagePath, fit: BoxFit.contain),
               ),
-
               const SizedBox(width: 14),
-
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -64,29 +53,19 @@ class MuscleCardExercices extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-
                     const SizedBox(height: 6),
-
-                     Text(
+                    Text(
                       subtitle,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.white70,
-                      ),
+                      style: const TextStyle(fontSize: 11, color: Colors.white70),
                     ),
                   ],
                 ),
               ),
-
               IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  size: 20,
-                  color: Colors.white70,
-                ),
+                onPressed: onTap,
+                icon: const Icon(Icons.more_vert, size: 20, color: Colors.white70),
               ),
             ],
           ),

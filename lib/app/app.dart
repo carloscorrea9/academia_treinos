@@ -1,19 +1,18 @@
-import 'package:academia_treinos/modules/home/presentation/pages/home_page.dart';
+import 'package:academia_treinos/app/config.dart';
+import 'package:academia_treinos/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import '../core/theme/app_theme.dart';
-import 'config.dart';
-
-class TreinosdeAcademia extends StatelessWidget {
-  const TreinosdeAcademia({super.key});
+class AppWidget extends StatelessWidget {
+  const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: AppConfig.appName,
       theme: AppTheme.dark,
-      home: const HomePage(),
+      routerConfig: Modular.routerConfig,
     );
   }
 }
